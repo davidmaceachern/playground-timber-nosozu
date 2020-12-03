@@ -1,15 +1,16 @@
 import { Timber } from "@timberio/node";
+// import { Nodesozu } from '@nodesozu'; TODO: might need to fix type definitions
+require('dotenv').config()
 
-import { Nodesozu } from '@nodesozu';
-
-
-// TODO: API KEY from file
-const logger = new Timber("YOUR_API_KEY", "YOUR_SOURCE_ID");
-const client = new Nodesozu()
-
-export const sum = (a: number, b: number) => {
-  if ('development' === process.env.NODE_ENV) {
-    console.log('boop');
+export function test_this() {
+  const apiKey = process.env.TIMBER_KEY;
+  if (!apiKey) {
+    throw new Error('No API Key');
   }
-  return a + b;
-};
+  const logger = new Timber(apiKey, "45016");
+  logger.info("Hello world")
+}
+
+// test_this()
+
+//const client = new Nodesozu()
