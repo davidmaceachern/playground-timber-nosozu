@@ -1,5 +1,5 @@
 import { Timber } from "@timberio/node";
-// import { Nodesozu } from '@nodesozu'; TODO: might need to fix type definitions
+import { Nosozu } from 'nosozu'; 
 require('dotenv').config()
 
 export function test_this() {
@@ -12,5 +12,6 @@ export function test_this() {
 }
 
 // test_this()
-
-//const client = new Nodesozu()
+const socketPath = "this"
+const client = new Nosozu(socketPath)
+client.run()
